@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | CyberGuard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">CYBER<span>GUARD</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="report.html">Report Incident</a></li>
+            <li><a href="dashboard.html" class="active">Dashboard</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" style="max-width: 100%; padding: 0;">
+        <div class="dashboard-grid">
+            
+            <!-- Sidebar: Admin Console -->
+            <aside class="sidebar">
+                <h3 style="margin-bottom: 20px; color: var(--text-gray); font-size: 1rem;">Admin Console</h3>
+                <ul>
+                    <!-- "Live Monitor" is active by default. JS handles the click logic. -->
+                    <li style="background: #1a1a1a; color: var(--primary-red); border-left: 3px solid red;">Live Monitor</li>
+                    <li>Incoming Reports</li>
+                    <li>Threat Analysis</li>
+                    <li>User Management</li>
+                    <li>System Logs</li>
+                    <li>Settings</li>
+                </ul>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main style="padding: 30px;">
+                <h2 style="margin-bottom: 20px;">Live Threat Monitor</h2>
+                
+                <!-- Stats Row -->
+                <div class="stat-cards">
+                    <div class="stat-card">
+                        <p>Total Incidents</p>
+                        <h3>1,204</h3>
+                    </div>
+                    <div class="stat-card">
+                        <p>Pending Review</p>
+                        <h3 style="color: var(--primary-red);">42</h3>
+                    </div>
+                    <div class="stat-card">
+                        <p>Resolved Today</p>
+                        <h3 style="color: #00ff00;">18</h3>
+                    </div>
+                </div>
+
+                <h3 style="margin-bottom: 15px;">Recent Reports</h3>
+                
+                <!-- Data Table -->
+                <div style="overflow-x: auto;">
+                    <table class="incident-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Type</th>
+                                <th>Date</th>
+                                <th>Severity</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <!-- 
+                           NOTE: This body is empty. 
+                           The script.js file fetches data from MySQL 
+                           and inserts the rows here automatically. 
+                        -->
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- MODAL 1: INCIDENT DETAILS POPUP           -->
+    <div id="incidentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3 style="margin-bottom: 20px; border-bottom: 2px solid var(--primary-red); display: inline-block;">Incident Details</h3>
+            
+            <div class="modal-body">
+                <div class="modal-row">
+                    <span class="modal-label">Incident ID:</span>
+                    <span class="modal-data" id="m-id"></span>
+                </div>
+                <div class="modal-row">
+                    <span class="modal-label">Type:</span>
+                    <span class="modal-data" id="m-type"></span>
+                </div>
+                <div class="modal-row">
+                    <span class="modal-label">Date/Time:</span>
+                    <span class="modal-data" id="m-date"></span>
+                </div>
+                <div class="modal-row">
+                    <span class="modal-label">Severity:</span>
+                    <span class="modal-data" id="m-sev"></span>
+                </div>
+                <div class="modal-row">
+                    <span class="modal-label">Current Status:</span>
+                    <span class="modal-data" id="m-status"></span>
+                </div>
+                <div style="margin-top: 15px;">
+                    <span class="modal-label" style="display:block; margin-bottom:5px;">Description & Notes:</span>
+                    <div id="m-desc" style="background: #000; padding: 10px; border: 1px solid #333; color: #ccc; font-family: monospace; min-height: 80px; white-space: pre-wrap;"></div>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn action-btn" style="border-color: #555; color: #aaa;">Archive</button>
+                <button class="btn action-btn">Escalate</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: ACCESS DENIED POPUP              -->
+    <div id="accessModal" class="modal">
+        <div class="modal-content" style="text-align: center; border-top: 4px solid var(--primary-red); max-width: 400px;">
+            <span class="close-access" style="float: right; font-size: 28px; cursor: pointer;">&times;</span>
+            <div style="margin: 20px 0;">
+                <i class="fas fa-lock" style="font-size: 4rem; color: var(--primary-red); margin-bottom: 20px;"></i>
+                <h2 style="font-size: 1.5rem; margin-bottom: 10px;">ACCESS DENIED</h2>
+                <p style="color: #ccc;">You do not have the required Admin Privileges to access this section.</p>
+            </div>
+            <button class="btn close-access-btn" style="width: 100%;">Close</button>
+        </div>
+    </div>
+
+    <!-- Link to JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
