@@ -1,7 +1,7 @@
 🛡️ CyberGuard Platform — Installation & Setup Guide
 
 CyberGuard is a full-stack web application built with Node.js (backend) and MySQL (database).
-Follow the steps below to set up and run the project on a fresh computer.
+Follow the steps below to set up and run the project on a fresh computer. Recommend to download the files and following below steps for full functionality.
 
 1️⃣ Prerequisites
 
